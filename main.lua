@@ -2,6 +2,7 @@ require "extern"
 require "math.init"
 require "entity.init"
 require "proc.init"
+require "utility.init"
 
 local function main()
     local v1 = mathf.Vector2d.new(100, 200)
@@ -29,6 +30,12 @@ local function main()
     print("-------hp-----", ent.attr.hp)
 
     proc.skill_proc:begin_skill(ent, 10000)
+
+    --delay, repeatCount, object, timerCallBack, completeCallBack
+    local function completeCallBack()
+        print("--------completeCallBack----------")
+    end
+    timer.TimerManager:add(2, 1, nil, nil, completeCallBack)
 end
 
 main()
